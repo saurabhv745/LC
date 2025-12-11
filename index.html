@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP Local Services | Premium Service Provider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2b4c;
+            --secondary: #d4af37;
+            --accent: #2c5aa0;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --gradient: linear-gradient(135deg, #1a2b4c 0%, #2c5aa0 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 1s ease;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.8rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: var(--dark);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient), url('https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 1.2rem 1.8rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background: transparent;
+        }
+
+        .search-box button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 2.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .search-box button:hover {
+            background: #c1941f;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--gradient);
+            transition: 0.4s ease;
+            z-index: -1;
+        }
+
+        .category-card:hover::before {
+            height: 100%;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-card:hover i,
+        .category-card:hover h3 {
+            color: white;
+        }
+
+        .category-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            transition: 0.4s ease;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            transition: 0.4s ease;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid #f0f0f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem;
+            color: var(--accent);
+            font-size: 2.5rem;
+            transition: 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--gradient);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+        }
+
+        .service-price {
+            font-weight: bold;
+            color: var(--success);
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+
+        .service-rating {
+            color: var(--warning);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 2px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .service-link:hover {
+            gap: 15px;
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 550px;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #777;
+            transition: 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+            background: #f5f5f5;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+
+        /* Booking Form */
+        .booking-form {
+            display: none;
+        }
+
+        .booking-details {
+            background: var(--light);
+            padding: 1.8rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .booking-details h3 {
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+        }
+
+        .booking-details p {
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .booking-details i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            display: none;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-option {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option.selected {
+            border-color: var(--accent);
+            background: rgba(44, 90, 160, 0.05);
+            transform: scale(1.05);
+        }
+
+        .payment-option i {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            padding: 5rem 0;
+            background: var(--light);
+            min-height: 80vh;
+        }
+
+        .user-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .user-info h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .bookings-list {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .booking-item {
+            padding: 1.8rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .booking-item:hover {
+            background: #f9f9f9;
+        }
+
+        .booking-item:last-child {
+            border-bottom: none;
+        }
+
+        .booking-status {
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-confirmed {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info i {
+            color: var(--accent);
+            width: 25px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                margin: 1.5rem 0;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 1.2rem;
+                right: 1.2rem;
+            }
+
+            nav {
+                width: 100%;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .payment-options {
+                flex-direction: column;
+            }
+
+            .booking-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <h1>UP <span>Services</span></h1>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" id="home-link">Home</a></li>
+                        <li><a href="#" id="services-link">Services</a></li>
+                        <li><a href="#" id="categories-link">Categories</a></li>
+                        <li><a href="#" id="dashboard-link" style="display: none;">Dashboard</a></li>
+                        <li><a href="#" id="about-link">About</a></li>
+                        <li><a href="#" id="contact-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="login-btn">Login</button>
+                    <button class="btn btn-primary" id="register-btn">Sign Up</button>
+                    <button class="btn btn-success" id="logout-btn" style="display: none;">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home-section">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Premium Services in Uttar Pradesh</h2>
+                <p>Experience the finest local services with our professional experts. Quality guaranteed for all your needs.</p>
+                <div class="search-box">
+                    <input type="text" id="service-search" placeholder="Search for services...">
+                    <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Service Categories</h2>
+                <p>Browse our premium services by category</p>
+            </div>
+            <div class="categories-grid" id="categories-container">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Services</h2>
+                <p>Handpicked professionals for all your needs</p>
+            </div>
+            <div class="services-grid" id="services-container">
+                <!-- Services will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose UP Services?</h2>
+                    <p>UP Services is Uttar Pradesh's premier service provider, connecting customers with verified, skilled professionals who deliver exceptional services at competitive prices.</p>
+                    <p>Founded by Saurabh Verma, our mission is to revolutionize the local service industry by providing reliable, high-quality services with complete transparency and customer satisfaction.</p>
+                    <p>With hundreds of service providers across multiple categories, we ensure that you get the best service experience every time, backed by our quality guarantee.</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="About UP Services">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our premium support team</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Lucknow, Uttar Pradesh</p>
+                    <p><i class="fas fa-phone"></i> +91 9517198863</p>
+                    <p><i class="fas fa-envelope"></i> saurabh4444verma@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sun: 7:00 AM - 11:00 PM</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17iSPPFPCy/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Sverma_editor"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/saurabh_vip1"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/saurabh-verma-83b263310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard" id="dashboard-section">
+        <div class="container">
+            <div class="user-info">
+                <h2>Welcome, <span id="user-name">User</span></h2>
+                <p>Email: <span id="user-email">user@example.com</span></p>
+                <p>Phone: <span id="user-phone">Not provided</span></p>
+            </div>
+            <div class="bookings-list">
+                <h2>Your Bookings</h2>
+                <div id="bookings-container">
+                    <!-- Bookings will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-login">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem;">Don't have an account? <a href="#" id="show-register">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-register">&times;</span>
+            <h2>Create an Account</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirm Password</label>
+                    <input type="password" id="register-confirm" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem;">Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-booking">&times;</span>
+            <h2>Book Premium Service</h2>
+            <div class="booking-details">
+                <h3 id="booking-service-name">Service Name</h3>
+                <p><i class="fas fa-user-tie"></i> Provider: <span id="booking-service-provider">Saurabh Services</span></p>
+                <p><i class="fas fa-tag"></i> Price: <span id="booking-service-price">₹0</span></p>
+                <p><i class="fas fa-phone"></i> Contact: <span id="booking-service-contact">9517198863</span></p>
+                <p><i class="fas fa-envelope"></i> Email: <span id="booking-service-email">saurabh4444verma@gmail.com</span></p>
+            </div>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="booking-date">Preferred Date</label>
+                    <input type="date" id="booking-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-time">Preferred Time</label>
+                    <input type="time" id="booking-time" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-address">Address</label>
+                    <textarea id="booking-address" class="form-control" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="booking-notes">Special Instructions (Optional)</label>
+                    <textarea id="booking-notes" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-payment">&times;</span>
+            <h2>Complete Payment</h2>
+            <div class="booking-details">
+                <h3 id="payment-service-name">Service Name</h3>
+                <p><i class="fas fa-calendar"></i> Date: <span id="payment-date">Not selected</span></p>
+                <p><i class="fas fa-clock"></i> Time: <span id="payment-time">Not selected</span></p>
+                <p><i class="fas fa-map-marker-alt"></i> Address: <span id="payment-address">Not provided</span></p>
+                <p><i class="fas fa-money-bill-wave"></i> Total Amount: <span id="payment-amount">₹0</span></p>
+            </div>
+            <div class="payment-options">
+                <div class="payment-option" id="card-payment">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Credit/Debit Card</p>
+                </div>
+                <div class="payment-option" id="upi-payment">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p>UPI Payment</p>
+                </div>
+                <div class="payment-option" id="cash-payment">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <p>Cash on Service</p>
+                </div>
+            </div>
+            <div id="card-details" style="display: none;">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456">
+                </div>
+                <div class="form-group">
+                    <label for="card-name">Name on Card</label>
+                    <input type="text" id="card-name" class="form-control" placeholder="saurabh verma">
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="card-expiry">Expiry Date</label>
+                        <input type="text" id="card-expiry" class="form-control" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="card-cvv">CVV</label>
+                        <input type="text" id="card-cvv" class="form-control" placeholder="123">
+                    </div>
+                </div>
+            </div>
+            <div id="upi-details" style="display: none;">
+                <div class="form-group">
+                    <label for="upi-id">UPI ID</label>
+                    <input type="text" id="upi-id" class="form-control" placeholder="yourname@upi">
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" id="confirm-payment" style="width: 100%; margin-top: 1.5rem;">Confirm Payment</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>UP Services</h3>
+                    <p>Uttar Pradesh's premier service provider, connecting customers with verified professionals.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17iSPPFPCy/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Sverma_editor"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/saurabh_vip1"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/saurabh-verma-83b263310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Categories</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Personal Care</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Daily Needs</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Vehicle Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Event Planning</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Lucknow, Uttar Pradesh</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +91 9517198863</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> saurabh4444verma@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>& Premium Service Provider</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data
+        const categories = [
+            { id: 1, name: "Home Services", icon: "fas fa-home" },
+            { id: 2, name: "Personal Care", icon: "fas fa-user" },
+            { id: 3, name: "Food Delivery", icon: "fas fa-utensils" },
+            { id: 4, name: "Daily Needs", icon: "fas fa-shopping-basket" },
+            { id: 5, name: "Vehicle Services", icon: "fas fa-car" },
+            { id: 6, name: "Professional Services", icon: "fas fa-briefcase" },
+            { id: 7, name: "Education", icon: "fas fa-graduation-cap" },
+            { id: 8, name: "Office Services", icon: "fas fa-building" },
+            { id: 9, name: "Travel Assistance", icon: "fas fa-plane" },
+            { id: 10, name: "Pet Care", icon: "fas fa-paw" },
+            { id: 11, name: "Event Planning", icon: "fas fa-calendar-alt" },
+            { id: 12, name: "Emergency Services", icon: "fas fa-ambulance" }
+        ];
+
+        const services = [
+            // Home Services (5)
+            { id: 1, categoryId: 1, name: "Electrician", description: "Professional electrical repair and installation services with 1-year warranty", price: "₹500 - ₹3000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-bolt", rating: 4.8 },
+            { id: 2, categoryId: 1, name: "Plumber", description: "Expert plumbing services for homes and offices with guaranteed work", price: "₹400 - ₹2500", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-faucet", rating: 4.7 },
+            { id: 3, categoryId: 1, name: "Carpenter", description: "Custom furniture and woodwork repairs by skilled craftsmen", price: "₹600 - ₹5000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-hammer", rating: 4.9 },
+            { id: 4, categoryId: 1, name: "Painter", description: "Interior and exterior painting with premium quality paints", price: "₹2000 - ₹15000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-paint-roller", rating: 4.6 },
+            { id: 5, categoryId: 1, name: "AC Repair", description: "AC installation, repair and maintenance with genuine parts", price: "₹500 - ₹4000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-wind", rating: 4.8 },
+
+            // Personal Care (5)
+            { id: 6, categoryId: 2, name: "Beautician at Home", description: "Professional beauty services at your doorstep with premium products", price: "₹500 - ₹3000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-spa", rating: 4.9 },
+            { id: 7, categoryId: 2, name: "Haircut & Grooming", description: "Haircut and grooming services for men and women by experts", price: "₹200 - ₹1500", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-cut", rating: 4.7 },
+            { id: 8, categoryId: 2, name: "Spa & Massage", description: "Relaxing spa and massage services at home with certified therapists", price: "₹800 - ₹5000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-hand-holding-heart", rating: 4.9 },
+            { id: 9, categoryId: 2, name: "Yoga Trainer", description: "Personal yoga and fitness training with customized plans", price: "₹500/session", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-running", rating: 4.8 },
+            { id: 10, categoryId: 2, name: "Diet Consultant", description: "Personalized diet and nutrition consultation by experts", price: "₹700 - ₹3000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-apple-alt", rating: 4.6 },
+
+            // Food Delivery (5)
+            { id: 11, categoryId: 3, name: "Home-cooked Meals", description: "Fresh home-cooked meals delivered daily with nutritional balance", price: "₹80 - ₹200/meal", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-utensils", rating: 4.7 },
+            { id: 12, categoryId: 3, name: "Restaurant Delivery", description: "Restaurant food delivery from premium local eateries", price: "Varies by order", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-hamburger", rating: 4.5 },
+            { id: 13, categoryId: 3, name: "Catering Service", description: "Premium catering for small events and parties", price: "₹150 - ₹500/person", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-concierge-bell", rating: 4.8 },
+            { id: 14, categoryId: 3, name: "Birthday Party Food", description: "Special party food orders and delivery for celebrations", price: "Custom pricing", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-birthday-cake", rating: 4.9 },
+            { id: 15, categoryId: 3, name: "Midnight Food Delivery", description: "Late night food delivery service until 3 AM", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-moon", rating: 4.6 },
+
+            // Daily Needs (10)
+            { id: 16, categoryId: 4, name: "Grocery Delivery", description: "Daily grocery items delivered fresh to your doorstep", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-shopping-cart", rating: 4.7 },
+            { id: 17, categoryId: 4, name: "Vegetable/Fruit Delivery", description: "Fresh vegetables and fruits sourced directly from farmers", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-carrot", rating: 4.8 },
+            { id: 18, categoryId: 4, name: "Medicine Delivery", description: "Prescription and OTC medicine delivery within 2 hours", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-pills", rating: 4.9 },
+            { id: 19, categoryId: 4, name: "Milk & Dairy Delivery", description: "Fresh milk and dairy products delivered daily", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-wine-bottle", rating: 4.7 },
+            { id: 20, categoryId: 4, name: "Bakery Items Delivery", description: "Fresh bakery items including bread, cakes and pastries", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-bread-slice", rating: 4.6 },
+            { id: 21, categoryId: 4, name: "Pet Food Delivery", description: "Premium pet food and supplies delivered to your home", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-paw", rating: 4.7 },
+            { id: 22, categoryId: 4, name: "Gas Cylinder Booking", description: "Gas cylinder booking and doorstep delivery service", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-fire", rating: 4.8 },
+            { id: 23, categoryId: 4, name: "Flower Delivery", description: "Fresh flower bouquets for all occasions", price: "₹200 - ₹5000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-flower", rating: 4.9 },
+            { id: 24, categoryId: 4, name: "Document/Parcel Pickup", description: "Document and parcel courier services with tracking", price: "₹50 - ₹500", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-box", rating: 4.7 },
+            { id: 25, categoryId: 4, name: "Water Can Delivery", description: "Mineral water can delivery for homes and offices", price: "Delivery charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-tint", rating: 4.6 },
+
+            // Vehicle Services (5)
+            { id: 26, categoryId: 5, name: "Car Wash & Detailing", description: "Professional car washing and detailing services at your location", price: "₹300 - ₹2000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-car-side", rating: 4.7 },
+            { id: 27, categoryId: 5, name: "Mechanic on Call", description: "On-call vehicle repair and maintenance services", price: "₹200 - ₹1500", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-tools", rating: 4.8 },
+            { id: 28, categoryId: 5, name: "Bike Taxi", description: "Bike taxi services for quick and affordable commutes", price: "As per distance", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-motorcycle", rating: 4.6 },
+            { id: 29, categoryId: 5, name: "Driver on Demand", description: "Professional driver services for your vehicle", price: "₹300/hour", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-user", rating: 4.7 },
+            { id: 30, categoryId: 5, name: "Tow Service", description: "Vehicle towing and recovery services", price: "₹500 - ₹3000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-truck-pickup", rating: 4.5 },
+
+            // Professional Services (5)
+            { id: 31, categoryId: 6, name: "Photographer", description: "Professional photography for events, portraits and products", price: "₹1500 - ₹10000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-camera", rating: 4.9 },
+            { id: 32, categoryId: 6, name: "Graphic Designer", description: "Creative graphic design for branding and marketing", price: "₹1000 - ₹8000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-palette", rating: 4.7 },
+            { id: 33, categoryId: 6, name: "Web Developer", description: "Website development and maintenance with modern technologies", price: "₹5000 - ₹50000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-laptop-code", rating: 4.8 },
+            { id: 34, categoryId: 6, name: "Content Writer", description: "Professional content writing for websites and marketing", price: "₹500 - ₹5000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-pen", rating: 4.6 },
+            { id: 35, categoryId: 6, name: "Digital Marketing", description: "Digital marketing and SEO services for business growth", price: "₹2000 - ₹20000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-chart-line", rating: 4.7 },
+
+            // Education Services (5)
+            { id: 36, categoryId: 7, name: "Home Tutor", description: "Home tutoring for all subjects and competitive exams", price: "₹300 - ₹1000/hour", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-chalkboard-teacher", rating: 4.8 },
+            { id: 37, categoryId: 7, name: "Spoken English Classes", description: "English speaking and communication skills training", price: "₹2000 - ₹8000/month", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-language", rating: 4.7 },
+            { id: 38, categoryId: 7, name: "Music Teacher", description: "Music classes for piano, guitar, and vocals", price: "₹500 - ₹1500/session", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-music", rating: 4.9 },
+            { id: 39, categoryId: 7, name: "Art & Craft Classes", description: "Creative art and craft classes for all ages", price: "₹400 - ₹1200/session", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-paint-brush", rating: 4.6 },
+            { id: 40, categoryId: 7, name: "Computer Classes", description: "Basic to advanced computer skills training", price: "₹1500 - ₹6000/month", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-laptop", rating: 4.7 },
+
+            // Office Services (5)
+            { id: 41, categoryId: 8, name: "Office Cleaning", description: "Professional office cleaning and maintenance services", price: "₹1500 - ₹8000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-broom", rating: 4.7 },
+            { id: 42, categoryId: 8, name: "Printer Repair", description: "Office printer repair and maintenance services", price: "₹400 - ₹3000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-print", rating: 4.6 },
+            { id: 43, categoryId: 8, name: "IT Support", description: "Professional IT support and network setup for offices", price: "₹2000 - ₹15000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-desktop", rating: 4.8 },
+            { id: 44, categoryId: 8, name: "CCTV Installation", description: "Office security system installation and maintenance", price: "₹3000 - ₹25000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-video", rating: 4.7 },
+            { id: 45, categoryId: 8, name: "Office Assistant", description: "Temporary office assistance and support staff", price: "₹300 - ₹1500/day", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-user-tie", rating: 4.5 },
+
+            // Travel Assistance (5)
+            { id: 46, categoryId: 9, name: "Tour Guide", description: "Professional tour guide services for local attractions", price: "₹1000 - ₹5000/day", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-map-marked-alt", rating: 4.8 },
+            { id: 47, categoryId: 9, name: "Travel Booking", description: "Flight, hotel and travel package booking services", price: "Service charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-plane-departure", rating: 4.7 },
+            { id: 48, categoryId: 9, name: "Local Translator", description: "Language translation and interpretation services", price: "₹500 - ₹3000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-language", rating: 4.6 },
+            { id: 49, categoryId: 9, name: "Travel Photographer", description: "Professional travel photography services", price: "₹1500 - ₹8000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-camera", rating: 4.9 },
+            { id: 50, categoryId: 9, name: "Hotel Arrangement", description: "Hotel booking and accommodation services", price: "Service charges apply", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-hotel", rating: 4.7 },
+
+            // Pet Care (5)
+            { id: 51, categoryId: 10, name: "Pet Grooming", description: "Professional pet grooming and styling services", price: "₹500 - ₹2500", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-paw", rating: 4.8 },
+            { id: 52, categoryId: 10, name: "Pet Walking", description: "Daily pet walking and exercise services", price: "₹200 - ₹500/walk", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-dog", rating: 4.7 },
+            { id: 53, categoryId: 10, name: "Pet Boarding", description: "Safe and comfortable pet boarding services", price: "₹300 - ₹1000/day", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-home", rating: 4.6 },
+            { id: 54, categoryId: 10, name: "Veterinary at Home", description: "Veterinary consultation and treatment at home", price: "₹600 - ₹3000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-stethoscope", rating: 4.9 },
+            { id: 55, categoryId: 10, name: "Pet Training", description: "Professional pet training and behavior correction", price: "₹1000 - ₹5000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-graduation-cap", rating: 4.7 },
+
+            // Event Planning (5)
+            { id: 56, categoryId: 11, name: "Birthday Planner", description: "Complete birthday party planning and execution", price: "₹5000 - ₹50000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-birthday-cake", rating: 4.9 },
+            { id: 57, categoryId: 11, name: "Wedding Planner", description: "Comprehensive wedding planning and coordination", price: "₹20000 - ₹200000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-ring", rating: 4.8 },
+            { id: 58, categoryId: 11, name: "DJ & Sound", description: "Professional DJ and sound system for events", price: "₹3000 - ₹20000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-music", rating: 4.7 },
+            { id: 59, categoryId: 11, name: "Event Decorator", description: "Creative event decoration and theme setup", price: "₹2000 - ₹50000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-theater-masks", rating: 4.8 },
+            { id: 60, categoryId: 11, name: "Catering Service", description: "Premium catering for all types of events", price: "₹150 - ₹800/person", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-utensils", rating: 4.7 },
+
+            // Emergency Services (5)
+            { id: 61, categoryId: 12, name: "Ambulance Service", description: "24/7 emergency ambulance services", price: "As per distance", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-ambulance", rating: 5.0 },
+            { id: 62, categoryId: 12, name: "Doctor on Call", description: "Emergency doctor consultation at home", price: "₹800 - ₹5000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-user-md", rating: 4.9 },
+            { id: 63, categoryId: 12, name: "Emergency Electrician", description: "24/7 emergency electrical repair services", price: "₹700 - ₹4000", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-bolt", rating: 4.8 },
+            { id: 64, categoryId: 12, name: "Emergency Plumber", description: "24/7 emergency plumbing services", price: "₹600 - ₹3500", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-faucet", rating: 4.7 },
+            { id: 65, categoryId: 12, name: "Locksmith", description: "Emergency lock and key services", price: "₹400 - ₹2500", provider: "Saurabh Services", contact: "9517198863", email: "saurabh4444verma@gmail.com", icon: "fas fa-key", rating: 4.6 }
+        ];
+
+        // State
+        let currentUser = null;
+        let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        let selectedService = null;
+        let selectedBooking = null;
+        let currentCategoryFilter = null;
+
+        // DOM Elements
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const bookingModal = document.getElementById('booking-modal');
+        const paymentModal = document.getElementById('payment-modal');
+        const closeLogin = document.getElementById('close-login');
+        const closeRegister = document.getElementById('close-register');
+        const closeBooking = document.getElementById('close-booking');
+        const closePayment = document.getElementById('close-payment');
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const bookingForm = document.getElementById('booking-form');
+        const servicesContainer = document.querySelector('#services-container');
+        const categoriesContainer = document.querySelector('#categories-container');
+        const homeSection = document.getElementById('home-section');
+        const servicesSection = document.getElementById('services-section');
+        const categoriesSection = document.getElementById('categories-section');
+        const aboutSection = document.getElementById('about-section');
+        const contactSection = document.getElementById('contact-section');
+        const dashboardSection = document.getElementById('dashboard-section');
+        const homeLink = document.getElementById('home-link');
+        const servicesLink = document.getElementById('services-link');
+        const categoriesLink = document.getElementById('categories-link');
+        const dashboardLink = document.getElementById('dashboard-link');
+        const aboutLink = document.getElementById('about-link');
+        const contactLink = document.getElementById('contact-link');
+        const userName = document.getElementById('user-name');
+        const userEmail = document.getElementById('user-email');
+        const userPhone = document.getElementById('user-phone');
+        const bookingsContainer = document.getElementById('bookings-container');
+        const confirmPayment = document.getElementById('confirm-payment');
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        const serviceSearch = document.getElementById('service-search');
+        const searchBtn = document.getElementById('search-btn');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCategories();
+            renderServices();
+            checkLoginStatus();
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('booking-date').min = today;
+            
+            // Add scroll animation to elements
+            addScrollAnimation();
+        });
+
+        // Render Categories
+        function renderCategories() {
+            categoriesContainer.innerHTML = '';
+            categories.forEach(category => {
+                const categoryCard = document.createElement('div');
+                categoryCard.className = 'category-card';
+                categoryCard.setAttribute('data-category', category.id);
+                categoryCard.innerHTML = `
+                    <i class="${category.icon}"></i>
+                    <h3>${category.name}</h3>
+                `;
+                categoriesContainer.appendChild(categoryCard);
+            });
+
+            // Add event listeners to category cards
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryId = parseInt(this.getAttribute('data-category'));
+                    currentCategoryFilter = categoryId;
+                    renderServices(categoryId);
+                    // Scroll to services section
+                    servicesSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Render Services
+        function renderServices(categoryId = null) {
+            servicesContainer.innerHTML = '';
+            
+            let servicesToRender = services;
+            if (categoryId) {
+                servicesToRender = services.filter(service => service.categoryId === categoryId);
+            }
+            
+            servicesToRender.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <div class="service-rating">
+                        ${generateStarRating(service.rating)}
+                        <span>${service.rating}</span>
+                    </div>
+                    <p class="service-price">${service.price}</p>
+                    <a href="#" class="service-link book-service" data-id="${service.id}">
+                        Book Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                `;
+                servicesContainer.appendChild(serviceCard);
+            });
+
+            // Add event listeners to book buttons
+            document.querySelectorAll('.book-service').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (!currentUser) {
+                        alert('Please login to book a service');
+                        loginModal.style.display = 'flex';
+                        return;
+                    }
+                    const serviceId = parseInt(this.getAttribute('data-id'));
+                    selectedService = services.find(s => s.id === serviceId);
+                    openBookingModal();
+                });
+            });
+        }
+
+        // Generate star rating
+        function generateStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - Math.ceil(rating);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Search Services
+        searchBtn.addEventListener('click', function() {
+            const searchTerm = serviceSearch.value.toLowerCase().trim();
+            if (searchTerm) {
+                const filteredServices = services.filter(service => 
+                    service.name.toLowerCase().includes(searchTerm) || 
+                    service.description.toLowerCase().includes(searchTerm)
+                );
+                
+                if (filteredServices.length > 0) {
+                    servicesContainer.innerHTML = '';
+                    filteredServices.forEach(service => {
+                        const serviceCard = document.createElement('div');
+                        serviceCard.className = 'service-card';
+                        serviceCard.innerHTML = `
+                            <div class="service-icon">
+                                <i class="${service.icon}"></i>
+                            </div>
+                            <h3>${service.name}</h3>
+                            <p>${service.description}</p>
+                            <div class="service-rating">
+                                ${generateStarRating(service.rating)}
+                                <span>${service.rating}</span>
+                            </div>
+                            <p class="service-price">${service.price}</p>
+                            <a href="#" class="service-link book-service" data-id="${service.id}">
+                                Book Now <i class="fas fa-arrow-right"></i>
+                            </a>
+                        `;
+                        servicesContainer.appendChild(serviceCard);
+                    });
+
+                    // Add event listeners to book buttons
+                    document.querySelectorAll('.book-service').forEach(button => {
+                        button.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            if (!currentUser) {
+                                alert('Please login to book a service');
+                                loginModal.style.display = 'flex';
+                                return;
+                            }
+                            const serviceId = parseInt(this.getAttribute('data-id'));
+                            selectedService = services.find(s => s.id === serviceId);
+                            openBookingModal();
+                        });
+                    });
+
+                    // Scroll to services section
+                    servicesSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('No services found matching your search.');
+                }
+            }
+        });
+
+        // Add scroll animation
+        function addScrollAnimation() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe service cards and category cards
+            document.querySelectorAll('.service-card, .category-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        }
+
+        // Check Login Status
+        function checkLoginStatus() {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            if (user) {
+                currentUser = user;
+                updateUIForLoggedInUser();
+            }
+        }
+
+        // Update UI for Logged In User
+        function updateUIForLoggedInUser() {
+            loginBtn.style.display = 'none';
+            registerBtn.style.display = 'none';
+            logoutBtn.style.display = 'block';
+            dashboardLink.style.display = 'block';
+            userName.textContent = currentUser.name;
+            userEmail.textContent = currentUser.email;
+            userPhone.textContent = currentUser.phone;
+            renderBookings();
+        }
+
+        // Render Bookings
+        function renderBookings() {
+            const userBookings = bookings.filter(booking => booking.userId === currentUser.id);
+            bookingsContainer.innerHTML = '';
+            
+            if (userBookings.length === 0) {
+                bookingsContainer.innerHTML = '<p>You have no bookings yet.</p>';
+                return;
+            }
+            
+            userBookings.forEach(booking => {
+                const service = services.find(s => s.id === booking.serviceId);
+                const bookingItem = document.createElement('div');
+                bookingItem.className = 'booking-item';
+                bookingItem.innerHTML = `
+                    <div>
+                        <h3>${service.name}</h3>
+                        <p>Date: ${booking.date} | Time: ${booking.time}</p>
+                        <p>Address: ${booking.address}</p>
+                        <p>Amount: ${service.price}</p>
+                    </div>
+                    <div>
+                        <span class="booking-status status-${booking.status}">${booking.status}</span>
+                    </div>
+                `;
+                bookingsContainer.appendChild(bookingItem);
+            });
+        }
+
+        // Open Booking Modal
+        function openBookingModal() {
+            if (!selectedService) return;
+            
+            document.getElementById('booking-service-name').textContent = selectedService.name;
+            document.getElementById('booking-service-provider').textContent = selectedService.provider;
+            document.getElementById('booking-service-price').textContent = selectedService.price;
+            document.getElementById('booking-service-contact').textContent = selectedService.contact;
+            document.getElementById('booking-servic  e-email').textContent = selectedService.email;
+            
+            bookingModal.style.display = 'flex';
+        }
+
+        // Event Listeners
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        registerBtn.addEventListener('click', () => {
+            registerModal.style.display = 'flex';
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            loginBtn.style.display = 'block';
+            registerBtn.style.display = 'block';
+            logoutBtn.style.display = 'none';
+            dashboardLink.style.display = 'none';
+            showSection('home');
+        });
+
+        closeLogin.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        closeRegister.addEventListener('click', () => {
+            registerModal.style.display = 'none';
+        });
+
+        closeBooking.addEventListener('click', () => {
+            bookingModal.style.display = 'none';
+        });
+
+        closePayment.addEventListener('click', () => {
+            paymentModal.style.display = 'none';
+        });
+
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            registerModal.style.display = 'flex';
+        });
+
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('home');
+        });
+
+        servicesLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('services');
+        });
+
+        categoriesLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('categories');
+        });
+
+        dashboardLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('dashboard');
+        });
+
+        aboutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('about');
+        });
+
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('contact');
+        });
+
+        // Show Section
+        function showSection(section) {
+            // Hide all sections
+            homeSection.style.display = 'none';
+            servicesSection.style.display = 'none';
+            categoriesSection.style.display = 'none';
+            aboutSection.style.display = 'none';
+            contactSection.style.display = 'none';
+            dashboardSection.style.display = 'none';
+            
+            // Show selected section
+            if (section === 'home') {
+                homeSection.style.display = 'block';
+                servicesSection.style.display = 'block';
+                categoriesSection.style.display = 'block';
+            } else if (section === 'services') {
+                servicesSection.style.display = 'block';
+            } else if (section === 'categories') {
+                categoriesSection.style.display = 'block';
+            } else if (section === 'about') {
+                aboutSection.style.display = 'block';
+            } else if (section === 'contact') {
+                contactSection.style.display = 'block';
+            } else if (section === 'dashboard') {
+                dashboardSection.style.display = 'block';
+                renderBookings();
+            }
+        }
+
+        // Login Form Submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Simple validation - in a real app, this would check against a database
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                loginModal.style.display = 'none';
+                updateUIForLoggedInUser();
+                alert('Login successful!');
+            } else {
+                alert('Invalid email or password');
+            }
+        });
+
+        // Register Form Submission
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const phone = document.getElementById('register-phone').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+            
+            if (password !== confirm) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Check if user already exists
+            if (users.find(u => u.email === email)) {
+                alert('User with this email already exists');
+                return;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                phone,
+                password
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            
+            registerModal.style.display = 'none';
+            updateUIForLoggedInUser();
+            alert('Registration successful!');
+        });
+
+        // Booking Form Submission
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!selectedService) return;
+            
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            const address = document.getElementById('booking-address').value;
+            const notes = document.getElementById('booking-notes').value;
+            
+            selectedBooking = {
+                serviceId: selectedService.id,
+                date,
+                time,
+                address,
+                notes
+            };
+            
+            // Update payment modal with booking details
+            document.getElementById('payment-service-name').textContent = selectedService.name;
+            document.getElementById('payment-date').textContent = date;
+            document.getElementById('payment-time').textContent = time;
+            document.getElementById('payment-address').textContent = address;
+            document.getElementById('payment-amount').textContent = selectedService.price;
+            
+            bookingModal.style.display = 'none';
+            paymentModal.style.display = 'flex';
+        });
+
+        // Payment Options Selection
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Show appropriate payment details
+                document.getElementById('card-details').style.display = 'none';
+                document.getElementById('upi-details').style.display = 'none';
+                
+                if (this.id === 'card-payment') {
+                    document.getElementById('card-details').style.display = 'block';
+                } else if (this.id === 'upi-payment') {
+                    document.getElementById('upi-details').style.display = 'block';
+                }
+            });
+        });
+
+        // Confirm Payment
+        confirmPayment.addEventListener('click', function() {
+            if (!selectedService || !selectedBooking) return;
+            
+            // Create booking record
+            const newBooking = {
+                id: Date.now(),
+                userId: currentUser.id,
+                serviceId: selectedService.id,
+                date: selectedBooking.date,
+                time: selectedBooking.time,
+                address: selectedBooking.address,
+                notes: selectedBooking.notes,
+                status: 'confirmed',
+                paymentStatus: 'paid',
+                amount: selectedService.price,
+                createdAt: new Date().toISOString()
+            };
+            
+            bookings.push(newBooking);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+            
+            paymentModal.style.display = 'none';
+            alert('Booking confirmed! Our service provider will contact you soon.');
+            
+            // Reset forms
+            bookingForm.reset();
+            selectedService = null;
+            selectedBooking = null;
+            
+            // Update dashboard if visible
+            if (dashboardSection.style.display === 'block') {
+                renderBookings();
+            }
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === registerModal) {
+                registerModal.style.display = 'none';
+            }
+            if (e.target === bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+            if (e.target === paymentModal) {
+                paymentModal.style.display = 'none';
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
